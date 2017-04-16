@@ -67,7 +67,7 @@ public class Hostel extends EntidadeComAlojamento implements ServicoAlojamento {
         }
         if (getClass() != obj.getClass()) {
             return false;
-        }
+            }
         final Hostel other = (Hostel) obj;
         if (!Objects.equals(this.HoraAbertura, other.HoraAbertura)) {
             return false;
@@ -80,7 +80,7 @@ public class Hostel extends EntidadeComAlojamento implements ServicoAlojamento {
     
     @Override
     public boolean validarServicoTransfer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return  isTransfer();
     }
     
 }

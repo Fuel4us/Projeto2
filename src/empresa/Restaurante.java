@@ -6,17 +6,18 @@ import java.util.Objects;
  *
  * @author Gonçalo Fonseca nº 1150503, Carlos Figueiredo nº 1140317
  */
-public class Restaurante extends EntidadeComNIF {
+public class Restaurante extends EntidadeComNIF implements ServicoPrecoMedio {
 
-    public int precoMedioPorPessoa;
+    public float precoMedioPorPessoa;
     public String categoria;
 
+    public static final float PRECOMEDIO_POR_OMISSAO = 0;
     public static final String COZINHA_TRADICIONAL = "Cozinha tradicional Portuguesa";
     public static final String COZINHA_ITALIANA = "Cozinha Italiana";
     public static final String COZINHA_CHINESA = "Cozinha chinesa";
     public static final String OUTRA = COZINHA_TRADICIONAL;
 
-    public Restaurante(String nome, String endereco, int NIF, int categoria, int precoMedioPorPessoa) {
+    public Restaurante(String nome, String endereco, int NIF, int categoria, float precoMedioPorPessoa) {
         super(nome, endereco, NIF);
 
         if (categoria == 3) {
@@ -53,7 +54,7 @@ public class Restaurante extends EntidadeComNIF {
         this.categoria = categoria;
     }
 
-    public int getPrecoMedioPorPessoa() {
+    public float getPrecoMedioPorPessoa() {
         return precoMedioPorPessoa;
     }
 
@@ -64,7 +65,7 @@ public class Restaurante extends EntidadeComNIF {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + this.precoMedioPorPessoa;
+        hash = (int) (97 * hash + this.precoMedioPorPessoa);
         hash = 97 * hash + Objects.hashCode(this.categoria);
         return hash;
     }
@@ -88,6 +89,11 @@ public class Restaurante extends EntidadeComNIF {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public float obterPrecoMedioPorPessoa() {
+        return getPrecoMedioPorPessoa();
     }
 
 }

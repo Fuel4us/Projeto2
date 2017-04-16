@@ -58,7 +58,7 @@ public class EntidadeComAlojamento extends EntidadeComNIF implements ServicoAloj
 
     @Override
     public boolean validarServicoTransfer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return  isTransfer();
     }
 
 }

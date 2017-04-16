@@ -2,7 +2,7 @@ package empresa;
 
 /**
  *
- * @author Carlinhos
+ * @author Gonçalo Fonseca nº 1150503, Carlos Figueiredo nº 1140317
  */
 public class EntidadeComNIF extends Entidade {
     

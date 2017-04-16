@@ -9,9 +9,17 @@ import java.util.Objects;
 public class Hotel extends EntidadeComAlojamento implements ServicoHotel {
     
     public String categoria;
+    public boolean servicoGuia;
+    public boolean servicoSPA;
     
-    public Hotel(String nome, String endereco, int NIF, boolean transfer, int categoria) {
+    public static final boolean SERVICOGUIA_POR_OMISSAO = false;
+    public static final boolean SERVICOSPA_POR_OMISSAO = false;
+    
+    public Hotel(String nome, String endereco, int NIF, boolean transfer, int categoria, boolean servicoSPA, boolean servicoGuia) {
         super(nome, endereco, NIF, transfer);
+        this.servicoGuia = servicoGuia;
+        this.servicoSPA = servicoSPA;
+                
         if (categoria == 1) {
             this.categoria = UMA_ESTRELA;
         } else if (categoria == 2) {
@@ -28,11 +36,15 @@ public class Hotel extends EntidadeComAlojamento implements ServicoHotel {
     public Hotel () {
         super();
         this.categoria = CATEGORIA_POR_OMISSAO;
+        this.servicoGuia = SERVICOGUIA_POR_OMISSAO;
+        this.servicoSPA = SERVICOSPA_POR_OMISSAO;
     }
     
     public Hotel (Hotel outra) {
         super(outra.getNome(), outra.getEndereco(), outra.getNIF(), outra.isTransfer());
         this.categoria = outra.getCategoria();
+        this.servicoGuia = outra.isServicoGuia();
+        this.servicoSPA = outra.isServicoSPA();
     }
 
     public String getCategoria() {
@@ -42,7 +54,22 @@ public class Hotel extends EntidadeComAlojamento implements ServicoHotel {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
+    
+    public boolean isServicoGuia() {
+        return servicoGuia;
+    }
 
+    public void setServicoGuia(boolean servicoGuia) {
+        this.servicoGuia = servicoGuia;
+    }
+
+    public boolean isServicoSPA() {
+        return servicoSPA;
+    }
+
+    public void setServicoSPA(boolean servicoSPA) {
+        this.servicoSPA = servicoSPA;
+    }
     @Override
     public int hashCode() {
         int hash = 7;
@@ -68,16 +95,14 @@ public class Hotel extends EntidadeComAlojamento implements ServicoHotel {
         return true;
     }
     
-    
-    
     @Override
     public boolean validarServicoGuia() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return isServicoGuia();
     }
 
     @Override
     public boolean validarServicoSPA() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return isServicoSPA();
     }
     
     

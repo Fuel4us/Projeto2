@@ -1,4 +1,3 @@
-
 package empresa;
 
 import java.util.Objects;
@@ -7,27 +6,29 @@ import java.util.Objects;
  *
  * @author Gonçalo Fonseca nº 1150503, Carlos Figueiredo nº 1140317
  */
-public class Entidade {
+public class Entidade implements ServicoAvaliacao {
 
     private String nome;
     private String endereco;
-    
-    public static final String NOME_POR_OMISSAO="SemNome";
-    public static final String ENDERECO_POR_OMISSAO="SemEndereco";
-    
+    private int avaliacao;
+    private int contA = 0;
+
+    public static final String NOME_POR_OMISSAO = "SemNome";
+    public static final String ENDERECO_POR_OMISSAO = "SemEndereco";
 
     public Entidade(String nome, String endereco) {
         this.nome = nome;
         this.endereco = endereco;
+
     }
-    
-    public Entidade(){
-        this.nome=NOME_POR_OMISSAO;
-        this.endereco=ENDERECO_POR_OMISSAO;
+
+    public Entidade() {
+        this.nome = NOME_POR_OMISSAO;
+        this.endereco = ENDERECO_POR_OMISSAO;
     }
-    
-    public Entidade(Entidade outraEntidade){
-        this(outraEntidade.nome,outraEntidade.endereco);
+
+    public Entidade(Entidade outraEntidade) {
+        this(outraEntidade.nome, outraEntidade.endereco);
     }
 
     public String getNome() {
@@ -67,6 +68,17 @@ public class Entidade {
         return true;
     }
 
+    @Override
+    public float obterAvaliacao() {
+        float aval;
+        aval = avaliacao;
+        return (float) (aval / contA);
+    }
+
+    @Override
+    public void atualizarAvaliacao(int val) {
+        avaliacao += val;
+        contA++;
+    }
 
 }
-

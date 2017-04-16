@@ -18,6 +18,7 @@ public class PontosInteresse extends Entidade {
 
     public PontosInteresse(String nome, String endereco, int categoria) {
         super(nome, endereco);
+        
         if (categoria == 3) {
             this.categoria = OUTRO;
         } else if (categoria == 2) {
