@@ -6,28 +6,56 @@ package empresa;
  */
 public class EntidadeComNIF extends Entidade {
     
+    /**
+     * variavel referente ao NIF
+     */
     public int NIF;
     
     public final int NIF_POR_OMISSAO = 00000000;
     
+    /**
+     * construtor com parametros :
+     * 
+     * @param nome
+     * @param endereco
+     * @param NIF 
+     */
     public EntidadeComNIF (String nome, String endereco, int NIF) {
         super(nome, endereco);
         this.NIF = NIF;
     }
     
+    /**
+     * construtor sem parametros
+     * 
+     */
     public EntidadeComNIF () {
         super();
         this.NIF = NIF_POR_OMISSAO;
     }
     
+    /**
+     * 
+     * @param outra 
+     */
     public EntidadeComNIF (EntidadeComNIF outra) {
         this(outra.getNome(), outra.getEndereco(), outra.NIF);
     }
 
+    /**
+     * get do NIF
+     * 
+     * @return 
+     */
     public int getNIF() {
         return NIF;
     }
 
+    /**
+     * modificador do nif
+     * 
+     * @param NIF 
+     */
     public void setNIF(int NIF) {
         this.NIF = NIF;
     }
@@ -40,6 +68,12 @@ public class EntidadeComNIF extends Entidade {
         return hash;
     }
 
+    /**
+     * metodo equals 
+     * 
+     * @param obj
+     * @return 
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -61,6 +95,9 @@ public class EntidadeComNIF extends Entidade {
         return true;
     }
     
-        
+    @Override
+         public String toString(){
+        return super.toString() + " , de NIF "+NIF  ;
+    }
     
 }

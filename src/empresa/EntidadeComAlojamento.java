@@ -6,27 +6,56 @@ package empresa;
  */
 public class EntidadeComAlojamento extends EntidadeComNIF implements ServicoAlojamento {
 
+    /**
+     * variavel transfer
+     */
     public boolean transfer;
 
+    /**
+     * construtor da entidade com alojamento
+     *
+     * @param nome
+     * @param endereco
+     * @param NIF
+     * @param transfer
+     */
     public EntidadeComAlojamento(String nome, String endereco, int NIF, boolean transfer) {
         super(nome, endereco, NIF);
         this.transfer = transfer;
     }
 
+    /**
+     * construtor sem parametros
+     *
+     */
     public EntidadeComAlojamento() {
         super();
         this.transfer = SERVICO_POR_OMISSAO;
     }
 
+    /**
+     *
+     * @param outra
+     */
     public EntidadeComAlojamento(EntidadeComAlojamento outra) {
         super(outra.getNome(), outra.getEndereco(), outra.getNIF());
         this.transfer = outra.isTransfer();
     }
 
+    /**
+     * get do trasfer
+     *
+     * @return
+     */
     public boolean isTransfer() {
         return transfer;
     }
 
+    /**
+     * modificador do trasfer
+     *
+     * @param transfer
+     */
     public void setTransfer(boolean transfer) {
         this.transfer = transfer;
     }
@@ -38,6 +67,12 @@ public class EntidadeComAlojamento extends EntidadeComNIF implements ServicoAloj
         return hash;
     }
 
+    /**
+     * metodo equals
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -56,9 +91,22 @@ public class EntidadeComAlojamento extends EntidadeComNIF implements ServicoAloj
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public boolean validarServicoTransfer() {
-        return  isTransfer();
+        return isTransfer();
     }
 
+    @Override
+    public String toString() {
+        if (this.transfer) {
+            return super.toString() + "Serviço transfer : tem ";
+        } else {
+            return super.toString() + "Serviço transfer : não tem ";
+        }
+
+    }
 }
